@@ -1,0 +1,74 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h4>Member Information</h4>
+      <br>
+
+      <!-- catch success message after successfully update -->
+      <% if (msg) { %>
+        <div class="alert alert-success" role="alert"><%= msg %></div>
+      <% } %>
+
+      <dl class="row">
+        <dt class="col-sm-4">ID</dt>
+        <dd class="col-sm-8"><%= libraryMember.id %></dd>
+
+        <dt class="col-sm-4">Name</dt>
+        <dd class="col-sm-8"><%= libraryMember.name %></dd>
+
+        <dt class="col-sm-4">Sex</dt>
+        <dd class="col-sm-8"><%= libraryMember.sex %></dd>
+
+        <dt class="col-sm-4">Birth Date</dt>
+        <dd class="col-sm-8"><%= libraryMember.birthDate %></dd>
+
+        <dt class="col-sm-4">Address</dt>
+        <dd class="col-sm-8"><%= libraryMember.address %></dd>
+
+        <dt class="col-sm-4">Recent visits</dt>
+        <dd class="col-sm-8">
+          <ul>
+            <% for( const visit of visits ) { %>
+                <li>
+                  <%= visit.visit %>
+                </li>
+            <% } %>
+          </ul>
+        </dd>
+      </dl>
+
+      <br>
+
+      <form action="/delete?_method=DELETE" method="post" class="d-inline">
+        <input type="hidden" name="id" value="<%= libraryMember.id %>">
+        <button type="submit" class="btn btn-danger badge" onclick="return confirm('Want to delete?')">Delete</button>
+      </form>
+
+      <a href="/edit/<%= libraryMember.id %>" class="btn btn-info badge">Edit</a>
+
+      <form action="/welcome/<%= libraryMember.id %>" method="post" class="d-inline" id="enterForm">
+        <input type="hidden" name="id" value="<%= libraryMember.id %>">
+        <input type="hidden" name="name" value="<%= libraryMember.name %>">
+        <input type="hidden" name="visit" id="visitInput" value="">
+        <button type="submit" class="btn btn-success badge">Enter</button>
+      </form>
+
+      <script>
+        window.addEventListener('DOMContentLoaded', () => { // Add event listener after DOM loads
+          const button = document.getElementById('enterForm').querySelector('button')
+
+          button.addEventListener('click', () => {
+            const now = new Date()
+            const dateTimeString = now.toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
+            document.getElementById('visitInput').value = dateTimeString
+          })
+        })
+      </script>
+
+    </div>
+  </div>
+</div>
+<br>
+<br>
+

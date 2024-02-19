@@ -1,0 +1,65 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h2 class="text-center">Edit Member Information</h2>
+      <br>
+
+      <!-- catch error message from validation -->
+      <% if (typeof errors != 'undefined') { %>
+        <div class="alert alert-danger" role="alert">
+          <ul>
+            <% errors.forEach(error => { %>
+             <li><%= error.msg %></li>
+            <% }) %>
+          </ul>
+        </div>
+      <% } %>
+
+      <form method="post" action="/edit/<%= libraryMember.id %>?_method=PUT">
+        <input type="hidden" name="_id" value="<%= libraryMember._id %>">
+        <input type="hidden" name="oldId" value="<%= libraryMember.oldId || libraryMember.id %>">
+        <div class="mb-3">
+          <label for="id" class="form-label">ID</label>
+          <input type="text" class="form-control" id="id" name="id" required value="<%= libraryMember.id %>">
+          <div id="id" class="form-text">Use your NIK</div>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" required value="<%= libraryMember.name %>">
+        </div>
+        <div class="form-group">
+          <label for="sex" class="form-label">Sex</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="sex" value="Female" id="female" <% if (libraryMember.sex === 'Female') {%>checked<%} %>>
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="sex" value="Male" id="male" <% if (libraryMember.sex === 'Male') {%>checked<%} %>>
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+        </div>
+        <br>
+        <div class="mb-3">
+          <label for="birthDate" class="form-label">Birth Date</label>
+          <input type="hidden" name="rawBirthDate" value="<%= libraryMember.birthDate %>">
+          <input type="date" class="form-control" id="birthDate" name="birthDate" required value="<%= libraryMember.birthDate instanceof Date ? libraryMember.birthDate.toISOString().split('T')[0] : libraryMember.birthDate %>">
+          <!-- check if libraryMember.birthDate is an instance of a Date object -->
+          <!-- If it is date object then format it using toISOString(), if not, use it as it is -->
+          <!-- correlated to edit process -->
+        </div>
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required value="<%= libraryMember.phoneNumber %>">
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <textarea class="form-control" id="address" name="address" rows="3" required><%= libraryMember.address %></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    </div>
+  </div>
+</div>

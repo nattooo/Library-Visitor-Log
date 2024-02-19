@@ -1,0 +1,46 @@
+<nav class="navbar">
+  <div class="container-fluid">
+    <img src="/img/leftoria-library-logo.jpg" alt="Logo" width="150" class="ms-5 d-inline-block align-text-top img-thumbnail rounded-circle">
+    <div class="inline-container me-5">
+      <p id="digital-date"></p>
+      <p id="digital-clock"></p>
+    </div>
+  </div>
+</nav>
+
+<br>
+
+<script>
+  const currentTime = () => {
+  const digitalDate = document.getElementById("digital-date");
+  const digitalClock = document.getElementById("digital-clock");
+
+  let todayDate = new Date(),
+    date = todayDate.getDate(),
+    month = todayDate.getMonth() + 1, // Adding 1 cz january start from 0
+    year = todayDate.getFullYear(),
+    hours = todayDate.getHours(),
+    minutes = todayDate.getMinutes(),
+    seconds = todayDate.getSeconds();
+
+  // Make 12-hour clock
+  let day;
+  day = hours < 12 ? "AM" : "PM";
+  hours = hours > 12 ? hours - 12 : hours;
+  hours = hours === 0 ? 12 : hours;
+
+  // Add 0 if the value is less than 10
+  hours = hours < 10 ? `0${hours}` : hours;
+  minutes = minutes < 10 ? `0${minutes}` : minutes;
+  seconds = seconds < 10 ? `0${seconds}` : seconds;
+
+  digitalDate.textContent = `${date}-${month}-${year}`;
+  digitalClock.textContent = `${hours}:${minutes}:${seconds} ${day}`;
+  };
+
+  // Call the function to update the time initially
+  currentTime();
+
+  // Set interval to update the time every second
+  setInterval(currentTime, 1000);
+</script>
