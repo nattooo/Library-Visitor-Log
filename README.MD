@@ -1,5 +1,4 @@
 # Library Visitor Log - NodeJS, Express, MongoDB, Mongoose, EJS
-___
   
 **Description :**  
 This is a library visitor log web application.
