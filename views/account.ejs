@@ -40,7 +40,7 @@
 
       <br>
 
-      <form action="/delete?_method=DELETE" method="post" class="d-inline">
+      <form action="/account?_method=DELETE" method="post" class="d-inline">
         <input type="hidden" name="id" value="<%= libraryMember.id %>">
         <button type="submit" class="btn btn-danger badge" onclick="return confirm('Want to delete?')">Delete</button>
       </form>

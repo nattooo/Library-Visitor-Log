@@ -16,7 +16,7 @@
         </div>
       <% } %>
 
-      <form method="post" action="/edit/<%= libraryMember.id %>?_method=PUT">
+      <form method="post" action="/account/<%= libraryMember.id %>?_method=PUT">
         <input type="hidden" name="_id" value="<%= libraryMember._id %>">
         <input type="hidden" name="oldId" value="<%= libraryMember.oldId || libraryMember.id %>">
         <div class="mb-3">

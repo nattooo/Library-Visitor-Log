@@ -34,7 +34,7 @@ router.get('/', async (req,res) => {
 
 
 // Sign Up Form
-router.get('/signup', async (req,res) => {
+router.get('/account', async (req,res) => {
   const libraryMembers = await LibraryMember.find()
 
   res.render('signup', {
@@ -46,7 +46,7 @@ router.get('/signup', async (req,res) => {
 
 
 // Sign Up Data Process
-router.post('/signup', [
+router.post('/account', [
   body('id')
     .custom(async value => {
       const duplicate = await LibraryMember.findOne({id: value})
@@ -144,7 +144,7 @@ router.get('/account/:id', async (req,res) => {
 
 
 // Delete Data Process
-router.delete('/delete', (req, res) => {
+router.delete('/account', (req, res) => {
   LibraryMember.deleteOne({id: req.body.id}).then(() => {
     req.flash('msg', 'Contact is successfully deleted')
     res.redirect('/')
@@ -165,7 +165,7 @@ router.get('/edit/:id', async (req, res) => {
 
 
 // Edit Process
-router.put('/edit/:id', [
+router.put('/account/:id', [
   body('id')
     .custom(async (value, {req}) => {
       const duplicate = await LibraryMember.findOne({id: value})
