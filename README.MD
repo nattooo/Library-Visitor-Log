@@ -28,14 +28,14 @@ Alternatively, you can use Nodemon for automatic server restarts:
 `nodemon devStart`
 
 **Technologies**  
-Node.js: JavaScript runtime environment.
-Express: Web application framework for Node.js.
-MongoDB: NoSQL database.
-Mongoose: MongoDB object modeling tool.
-EJS: Embedded JavaScript templates for rendering views.
-Express-EJS-Layouts: Layout support for EJS templates.
-Express-Session: Session middleware for Express.
-Connect-Flash: Flash message middleware for Express.
-Express-Validator: Middleware for input validation in Express.
-Method-Override: Middleware for HTTP method override in Express.
+Node.js: JavaScript runtime environment.  
+Express: Web application framework for Node.js.  
+MongoDB: NoSQL database.  
+Mongoose: MongoDB object modeling tool.  
+EJS: Embedded JavaScript templates for rendering views.  
+Express-EJS-Layouts: Layout support for EJS templates.  
+Express-Session: Session middleware for Express.  
+Connect-Flash: Flash message middleware for Express.  
+Express-Validator: Middleware for input validation in Express.  
+Method-Override: Middleware for HTTP method override in Express.  
 Nodemon: Utility for auto-restarting the server during development.
